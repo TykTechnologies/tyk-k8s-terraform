@@ -1,0 +1,30 @@
+## Requirements
+1. Dashboard License
+2. MDCB License
+3. Terraform
+4. K8s cluster
+
+## Instructions
+1. Create namespace
+```
+kubectl create namespace tyk
+```
+
+2. Create secret
+```
+kubectl create secret generic tyk-secret --namespace tyk \
+   --from-literal=AdminSecret=12345 \
+   --from-literal=APISecret=topsecretpassword \
+   --from-literal=DashLicense=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd2VkX25vZGVzIjoiMWVkMWRjOTEtNjkwOS00NzdjLTZjYmItMDExYWZiMzZmMTFjLGM5MTE2YTgxLTY5MzctNDQ2Mi03ZmZmLTY3Nzg4YjVmNGVhOSwwNzQyZjY4Ni04YWM1LTRjOTMtNGE3NC1mNDNkMmFhNWJhNTAsY2M5MmZkNjktMTY0MC00NDBhLTRiYWUtNWE1ODFjNGY4NmQxLGVlZjVmNDE4LTJkMzUtNGViNS03YjBjLTE1Y2RiMTg2MWJhYyxkZWI1ZDYxNi1iZjkxLTRiMzEtNTJjOS1jOTUwMmU2NGU4Y2YsNWE3NzUzOGMtYTRjYS00YTg0LTQxM2MtMmU3YThmMTU4ZDRhLGU3Y2NkOWYzLWI2OWQtNGM1MS01OGY4LTM5NDQyY2VhM2RiNiw0MzAwY2U3Ny1kYjgyLTQzZGUtNDZlZi0yOTE3NjNmNzQ0MWYsNGYyMmE3NzMtMThjZS00NmMyLTdlYjYtOTI5YzhmYjdiYjA5IiwiZXhwIjoxNzIxNTE5OTk5LCJpYXQiOjE3MTg4NDQ2OTcsIm93bmVyIjoiNjFjY2U2MmMxMjFjYTEwMDAxOGJiMTkwIiwic2NvcGUiOiJtdWx0aV90ZWFtLHJiYWMsZ3JhcGgsZmVkZXJhdGlvbiIsInYiOiIyIn0.MREUiRMrmNRJtfG-e93BEUx3ys7WEEX-TRAKhjIykDJxZNyoxAgukSALukCJr22EiufjhubPBNVnvbIHSVozOgadBR3hsGf46h-D2olLWlonFvBo3g-q-7abcW4y13wcwquXXWDSq5-meO8fxN54Jl_xi1OF8mCIQE8aECx0pB_PiG9iRYBnK2My-oVYoxQahljUNvEOMV-_67WmjjOT8-WWj4CUY37oQhZtb-GYNMc_QGDmP3j_z3ZQck4ROmY5oeTIh0QAsfC7judS1BawtTScRdLCbtanD4fyDSQYFGHYiPwR-5stFlBY93lFDSHyx12DWXKCqWL6-RQjpxh3vw \
+   --from-literal=MDCBLicense=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJTS1UiOiJUeWstTURDQi1FTlQiLCJleHAiOjE3MjE1MTk5OTksIm93bmVyIjoiNjFjY2U2MmMxMjFjYTEwMDAxOGJiMTkwIn0.eRzVM33t8tP-8wHlmA8Z9lPwvkCUlUBycmuNwv0d9K4YLn0lYbTPPC43Ca-48go6oGltkT-7DfMbMkBZzn3OrrMERaFhUDhrK5oqCyfneTz6__H7BBHlByDOHR-G3II8WiT4ZlqSbaxMHJtg8OJ1PWdVmUNBOeWCOF2QeHh9WhCl3TzpQmYFjFZLa3ht9UMlNYcPzeNMalKrGSzfLVYbUwz-Pf4zXu0LwJcQimYdUZFa4bbu2TBxfHZoTAPaRfxknLUUEiGDxkvgh7bnARs8RR9WC2Ry8VODXSHLLBJJAtR7zCB7_IFpmOP1ZO3CgpGKNr8FmEU41S6soSukuV3XHw \
+   --from-literal=adminUserFirstName=Default \
+   --from-literal=adminUserLastName=Example \
+   --from-literal=adminUserEmail=default@example.com \
+   --from-literal=adminUserPassword=topsecretpassword
+```
+
+3. Run Terraform install
+```
+terraform init
+terraform apply
+```
