@@ -8,12 +8,12 @@ resource "helm_release" "tyk" {
 
   set {
     name  = "global.redis.addrs[0]"
-    value = "${helm_release.tyk_redis.name}-redis-cluster.${var.namespace}.svc:${local.redis-port}"
+    value = "${module.redis.name}-redis-cluster.${var.namespace}.svc:${module.redis.redis-port}"
   }
 
   set {
     name  = "global.redis.pass"
-    value = local.redis-pass
+    value = module.redis.redis-pass
   }
 
   set {
@@ -28,22 +28,22 @@ resource "helm_release" "tyk" {
 
   set {
     name  = "global.postgres.host"
-    value = "${helm_release.tyk_storage_postgres.name}-postgresql.${var.namespace}.svc"
+    value = "${module.pgsql.name}-postgresql.${var.namespace}.svc"
   }
 
   set {
     name  = "global.postgres.port"
-    value = local.storage-port
+    value = module.pgsql.storage-port
   }
 
   set {
     name  = "global.postgres.password"
-    value = local.storage-pass
+    value = module.pgsql.storage-pass
   }
 
   set {
     name  = "global.postgres.database"
-    value = local.storage-name
+    value = module.pgsql.storage-name
   }
 
   set {
@@ -86,5 +86,5 @@ resource "helm_release" "tyk" {
     value = "tykio/tyk-pump-docker-pub"
   }
 
-  depends_on = [helm_release.tyk_redis, helm_release.tyk_storage_postgres]
+  depends_on = [module.redis, module.pgsql]
 }

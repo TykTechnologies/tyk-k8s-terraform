@@ -32,3 +32,19 @@ resource "helm_release" "tyk_storage_postgres" {
     value = local.storage-port
   }
 }
+
+output "name" {
+  value = helm_release.tyk_storage_postgres.name
+}
+
+output "storage-name" {
+  value = local.storage-name
+}
+
+output "storage-port" {
+  value = local.storage-port
+}
+
+output "storage-pass" {
+  value = local.storage-pass
+}

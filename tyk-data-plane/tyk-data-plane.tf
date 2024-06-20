@@ -8,12 +8,12 @@ resource "helm_release" "tyk" {
 
   set {
     name  = "global.redis.addrs[0]"
-    value = "${helm_release.tyk_redis.name}-redis-cluster.${var.namespace}.svc:${local.redis-port}"
+    value = "${module.redis.name}-redis-cluster.${var.namespace}.svc:${module.redis.redis-port}"
   }
 
   set {
     name  = "global.redis.pass"
-    value = local.redis-pass
+    value = module.redis.redis-pass
   }
 
   set {
@@ -77,5 +77,5 @@ resource "helm_release" "tyk" {
     value = "true"
   }
 
-  depends_on = [helm_release.tyk_redis]
+  depends_on = [module.redis]
 }

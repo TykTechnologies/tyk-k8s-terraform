@@ -31,3 +31,15 @@ resource "helm_release" "tyk_redis" {
     value = "none"
   }
 }
+
+output "name" {
+  value = helm_release.tyk_redis.name
+}
+
+output "redis-pass" {
+  value = local.redis-pass
+}
+
+output "redis-port" {
+  value = local.redis-port
+}
