@@ -82,6 +82,53 @@ resource "helm_release" "tyk" {
   }
 
   set {
+    name  = "tyk-dashboard.dashboard.extraEnvs[0].name"
+    value = "TYK_DB_SECURITY_OPENPOLICY_ENABLED"
+  }
+
+  set {
+    name  = "tyk-dashboard.dashboard.extraEnvs[0].value"
+    type  = "string"
+    value = var.opa_enabled ? "true" : "false"
+  }
+
+  set {
+    name  = "tyk-dashboard.dashboard.extraEnvs[1].name"
+    value = "TYK_DB_SECURITY_OPENPOLICY_ENABLEAPI"
+  }
+
+  set {
+    name  = "tyk-dashboard.dashboard.extraEnvs[1].value"
+    type  = "string"
+    value = var.opa_enabled ? "true" : "false"
+  }
+
+  set {
+    name  = "tyk-dashboard.dashboard.extraVolumes[0].name"
+    value = "opa-rules"
+  }
+
+  set {
+    name  = "tyk-dashboard.dashboard.extraEnvs[0].configMap.name"
+    value = "opa-rules"
+  }
+
+  set {
+    name  = "tyk-dashboard.dashboard.extraVolumeMounts[0].name"
+    value = "opa-rules"
+  }
+
+  set {
+    name  = "tyk-dashboard.dashboard.extraVolumeMounts[0].mountPath"
+    value = "/opt/tyk-dashboard/schemas/dashboard.rego"
+  }
+
+  set {
+    name  = "tyk-dashboard.dashboard.extraVolumeMounts[0].subPath"
+    value = "dashboard.rego"
+  }
+
+  set {
     name  = "tyk-pump.pump.image.tag"
     value = var.pump_version
   }
