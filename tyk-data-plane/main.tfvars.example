@@ -1,0 +1,5 @@
+namespace                 = "tyk"
+gateway_version           = "v5.3"
+kubernetes_config_path    = "~/.kube/config"
+kubernetes_config_context = "dev-east-minikube"
+datadog_enabled           = false

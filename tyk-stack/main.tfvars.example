@@ -1,0 +1,10 @@
+namespace                 = "tyk"
+gateway_version           = "v5.3"
+dashboard_version         = "v5.3"
+pump_version              = "v1.9"
+mdcb_version              = "v2.5"
+kubernetes_config_path    = "~/.kube/config"
+kubernetes_config_context = "dev-east-minikube"
+opa_enabled               = false
+operator_enabled          = false
+datadog_enabled           = false
