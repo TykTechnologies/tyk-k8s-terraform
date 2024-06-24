@@ -1,0 +1,10 @@
+cluster_name="eks-demo"
+cluster_location="us-west-1"
+eks_version="1.29"
+nodes = {
+  eks-demo-np = {
+    desired_size = 2
+    instance_types = ["c5.xlarge"]
+    labels = []
+  }
+}
