@@ -170,5 +170,5 @@ resource "helm_release" "tyk" {
     value = "true"
   }
 
-  depends_on = [module.redis, module.pgsql]
+  depends_on = [module.redis, module.pgsql, module.opa]
 }

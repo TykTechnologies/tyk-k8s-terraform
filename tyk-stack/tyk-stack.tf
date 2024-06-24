@@ -237,5 +237,5 @@ resource "helm_release" "tyk" {
     value = "method,response_code,api_version,api_name,api_id,org_id,tracked,path,oauth_id"
   }
 
-  depends_on = [module.redis, module.pgsql]
+  depends_on = [module.redis, module.pgsql, module.opa]
 }
