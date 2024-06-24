@@ -109,7 +109,7 @@ resource "helm_release" "tyk" {
   }
 
   set {
-    name  = "tyk-dashboard.dashboard.extraEnvs[0].configMap.name"
+    name  = "tyk-dashboard.dashboard.extraVolumes[0].configMap.name"
     value = "opa-rules"
   }
 
