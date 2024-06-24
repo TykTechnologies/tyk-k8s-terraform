@@ -116,7 +116,6 @@ patch_request[x] {
 	x := {"api_definition": {"config_data":{"OPARule": "Injected"}}}
 }
 # --------- End "custom" rules ----------
-}
 EOF
   }
 }
