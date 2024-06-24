@@ -5,6 +5,11 @@ provider "helm" {
   }
 }
 
+provider "kubernetes" {
+  config_path    = var.kubernetes_config_path
+  config_context = var.kubernetes_config_context
+}
+
 module "redis" {
   source    = "../modules/databases/redis"
   namespace = var.namespace
